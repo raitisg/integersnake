@@ -6,9 +6,11 @@ Simplified clone of [integersnake.com](https://integersnake.com/) game.
 
 I got hooked on the idea and quickly made simplified clone of the integersnake.com to make phonegap version for myself to play when there is no internet access.
 
-## Installation
+## Android app
 
-No need for installation, but if you want to make Phonegap/Cordova version, this is fully compatible with no additional plugins.
+Android version of this game atvailable at [Google Play](https://play.google.com/store/apps/details?id=lv.cookie.integersnake).
+
+If you want to make Phonegap/Cordova version yourself, this project is fully compatible with no additional plugins.
 
 ## Usage
 
