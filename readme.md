@@ -1,4 +1,4 @@
-# IntegerSnake
+# Integer Snake
 
 Simplified clone of [integersnake.com](https://integersnake.com/) game.
 
