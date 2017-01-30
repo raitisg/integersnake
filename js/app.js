@@ -7,7 +7,6 @@ var cells;
 
 var $canvas;
 var $score;
-var $retry;
 
 var isMouseDown = false;
 var isTouchDevice = 'ontouchstart' in window;
@@ -41,7 +40,6 @@ function getElementIndex(node) {
 function init() {
 	$canvas = $one('#canvas');
 	$score = $one('#score');
-	$retry = $one('#retry');
 
 	var cells_html = '';
 	var css_size = (100 / size) + '%';
@@ -111,9 +109,9 @@ function randomSquare() {
 function attachListeners() {
 	var i;
 
-	$retry.addEventListener('click', start);
+	$one('#new_game').addEventListener('click', start);
 
-	$score.addEventListener('dblclick', start);
+	$one('#undo').addEventListener('click', undo);
 
 	for (i = cells.length - 1; i >= 0; i--) {
 		cells[i].addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', function(event) {
@@ -251,6 +249,8 @@ function evaluateSelected() {
 			steps: 1
 		};
 
+		$one('#undo').removeAttribute('disabled');
+
 		setScore(score + points);
 	}
 
@@ -370,6 +370,7 @@ function undo() {
 
 	setScore(undoHistory.score);
 	grid = undoHistory.grid;
+	$one('#undo').setAttribute('disabled', true);
 	drawGrid();
 
 	undoHistory = {
