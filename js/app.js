@@ -1,4 +1,5 @@
 var size = 5;
+var undoHistory = {};
 var selected;
 var grid;
 var score;
@@ -61,12 +62,10 @@ function init() {
 
 function start() {
 	selected = [];
-	grid = [];
-	score = 0;
 
-	increaseScore(0);
-
+	setScore(0);
 	initGrid();
+	drawGrid();
 
 	$one('body').classList.remove('game-over');
 }
@@ -75,20 +74,23 @@ function start() {
  * Init grid with new random numbers.
  */
 function initGrid() {
-	var x, y, n;
-
-	// Init.
-	for (y = 0; y < size; y++) {
+	grid = [];
+	for (var y = 0; y < size; y++) {
 		grid[y] = new Array(size);
-		for (x = 0; x < size; x++) {
+		for (var x = 0; x < size; x++) {
 			grid[y][x] = randomSquare();
 		}
 	}
+}
 
-	// Draw.
-	n = 0;
-	for (y = 0; y < size; y++) {
-		for (x = 0; x < size; x++) {
+/**
+ * Draw grid with current values.
+ */
+function drawGrid() {
+	var n = 0;
+
+	for (var y = 0; y < size; y++) {
+		for (var x = 0; x < size; x++) {
 			setCellValue(n++, grid[y][x]);
 		}
 	}
@@ -241,11 +243,19 @@ function evaluateSelected() {
 	y = Math.floor(s / size);
 	x = s % size;
 
+	if (selected.length > 1) {
+		undoHistory = {
+			// JS passes arrays by reference, so we must do a little dance...
+			grid: JSON.parse(JSON.stringify(grid)),
+			score: score,
+			steps: 1
+		};
+
+		setScore(score + points);
+	}
+
 	grid[y][x] = points;
 	setCellValue(s, points);
-	if (selected.length > 1) {
-		increaseScore(points);
-	}
 
 	for (i = 0; i < selected.length - 1; i++) {
 		s = selected[i];
@@ -322,11 +332,28 @@ function gameOver() {
 }
 
 /**
- * Increase score by n points.
+ * Set score.
  *
- * @param {Number} n
+ * @param {Number} points
  */
-function increaseScore(n) {
-	score += n;
+function setScore(points) {
+	score = points;
 	$score.innerHTML = score;
+}
+
+/**
+ * Undo one step.
+ */
+function undo() {
+	if (!undoHistory.steps) {
+		return;
+	}
+
+	setScore(undoHistory.score);
+	grid = undoHistory.grid;
+	drawGrid();
+
+	undoHistory = {
+		steps: 0
+	};
 }
