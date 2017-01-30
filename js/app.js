@@ -337,8 +337,27 @@ function gameOver() {
  * @param {Number} points
  */
 function setScore(points) {
-	score = points;
-	$score.innerHTML = score;
+	if (points <= score || points < 2) {
+		score = points;
+		$score.innerHTML = score;
+		return;
+	}
+
+	var step = Math.ceil((points - score) / 10);
+
+	var h = setInterval(function() {
+		score += step;
+
+		if (score > points) {
+			score = points;
+		}
+
+		$score.innerHTML = score;
+
+		if (score >= points) {
+			clearInterval(h);
+		}
+	}, 30);
 }
 
 /**
