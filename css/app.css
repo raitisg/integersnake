@@ -30,7 +30,7 @@ body {
 .canvas {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   background-color: white;
-  transition: opacity 1s;
+  transition: all 1s;
   user-select: none;
   flex-wrap: wrap;
   cursor: pointer;
@@ -81,35 +81,52 @@ body {
   opacity: .5;
 }
 
-.game-over {
-  background: rgba(125, 0, 0, 0.5);
+.game-over-screen {
+  background: rgba(0, 0, 0, 0.1);
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
   position: absolute;
   user-select: none;
   cursor: default;
-  height: 100vmin;
-  width: 100vmin;
+  height: 98vmin;
+  width: 98vmin;
   font-size: 2em;
   display: none;
-  color: #fff;
-  left: 0;
-  top: 0;
+  left: 1vmin;
+  top: 1vmin;
 }
 
-.game-over.active {
+.game-over-screen h1 {
+  text-shadow: 0 0 10px #fff;
+}
+
+.game-over .game-over-screen {
   display: flex;
 }
 
+.game-over .canvas {
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
 .retry {
+  background: linear-gradient(to bottom, #ffdc00, #ffcd00);
+  text-shadow: 0 0 2px #fff;
   border-radius: 0.3em;
-  padding: 0.5em 1em;
-  background: #333;
+  padding: 0.8em 2em;
+  font-size: 1.4rem;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 1em;
-  color: #fff;
+  color: #111;
   border: 0;
+}
+
+.retry:active,
+.retry:focus {
+  background: linear-gradient(to bottom, #ffcd00, #ffdc00);
+  outline: 0;
 }
 
 @media screen and (orientation: portrait) {

@@ -7,7 +7,6 @@ var cells;
 var $canvas;
 var $score;
 var $retry;
-var $gameOver;
 
 var isMouseDown = false;
 var isTouchDevice = 'ontouchstart' in window;
@@ -39,7 +38,6 @@ function getElementIndex(node) {
 }
 
 function init() {
-	$gameOver = $one('#game-over');
 	$canvas = $one('#canvas');
 	$score = $one('#score');
 	$retry = $one('#retry');
@@ -70,7 +68,7 @@ function start() {
 
 	initGrid();
 
-	$gameOver.classList.remove('active');
+	$one('body').classList.remove('game-over');
 }
 
 /**
@@ -320,7 +318,7 @@ function isGameOver() {
  * Show game over screen.
  */
 function gameOver() {
-	$gameOver.classList.add('active');
+	$one('body').classList.add('game-over');
 }
 
 /**
