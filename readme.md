@@ -19,7 +19,6 @@ If you want to make Phonegap/Cordova version yourself, this project is fully com
 * The sum of the connected numbers will be put in the last square you touch.
 * The other squares you touch will be randomly filled with 1, 2 or 3.
 * Try to get a high score and squares with large numbers.
-* Double click/tap on score to reset game.
 
 ## Credits
 
