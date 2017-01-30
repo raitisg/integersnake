@@ -112,8 +112,8 @@ body {
   width: 98vmin;
   font-size: 2em;
   display: none;
+  bottom: 1vmin;
   left: 1vmin;
-  top: 1vmin;
 }
 
 .game-over-screen h1 {
