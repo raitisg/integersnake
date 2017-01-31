@@ -7,6 +7,7 @@ var cells;
 
 var $canvas;
 var $score;
+var $undo;
 
 var isMouseDown = false;
 var isTouchDevice = 'ontouchstart' in window;
@@ -40,6 +41,7 @@ function getElementIndex(node) {
 function init() {
 	$canvas = $one('#canvas');
 	$score = $one('#score');
+	$undo = $one('#undo');
 
 	var cells_html = '';
 	var css_size = (100 / size) + '%';
@@ -111,7 +113,7 @@ function attachListeners() {
 
 	$one('#new_game').addEventListener('click', start);
 
-	$one('#undo').addEventListener('click', undo);
+	$undo.addEventListener('click', undo);
 
 	for (i = cells.length - 1; i >= 0; i--) {
 		cells[i].addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', function(event) {
@@ -242,15 +244,7 @@ function evaluateSelected() {
 	x = s % size;
 
 	if (selected.length > 1) {
-		undoHistory = {
-			// JS passes arrays by reference, so we must do a little dance...
-			grid: JSON.parse(JSON.stringify(grid)),
-			score: score,
-			steps: 1
-		};
-
-		$one('#undo').removeAttribute('disabled');
-
+		setUndo();
 		setScore(score + points);
 	}
 
@@ -328,6 +322,7 @@ function isGameOver() {
  * Show game over screen.
  */
 function gameOver() {
+	clearUndo();
 	$one('body').classList.add('game-over');
 }
 
@@ -370,10 +365,25 @@ function undo() {
 
 	setScore(undoHistory.score);
 	grid = undoHistory.grid;
-	$one('#undo').setAttribute('disabled', true);
 	drawGrid();
+	clearUndo();
+}
 
+function setUndo() {
+	undoHistory = {
+		// JS passes arrays by reference, so we must do a little dance...
+		grid: JSON.parse(JSON.stringify(grid)),
+		score: score,
+		steps: 1
+	};
+
+	$undo.removeAttribute('disabled');
+}
+
+function clearUndo() {
 	undoHistory = {
 		steps: 0
 	};
+
+	$undo.setAttribute('disabled', true);
 }
