@@ -1,5 +1,6 @@
 var size = 5;
 var undoHistory = {};
+var undoUsedUp = false;
 var selected;
 var grid;
 var score;
@@ -63,6 +64,7 @@ function init() {
 function start() {
 	selected = [];
 
+	undoUsedUp = false;
 	clearUndo();
 	setScore(0);
 	initGrid();
@@ -373,13 +375,23 @@ function undo() {
 		return;
 	}
 
+	if (!confirm('You only have 1 undo per game. Continue?')) {
+		return;
+	}
+
 	setScore(undoHistory.score);
 	grid = undoHistory.grid;
 	drawGrid();
 	clearUndo();
+
+	undoUsedUp = true;
 }
 
 function setUndo() {
+	if (undoUsedUp) {
+		return;
+	}
+
 	undoHistory = {
 		// JS passes arrays by reference, so we must do a little dance...
 		grid: JSON.parse(JSON.stringify(grid)),
