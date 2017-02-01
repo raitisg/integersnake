@@ -275,6 +275,10 @@ body {
     text-shadow: 0px -2px #999;
     background-color: #ccc;
   }
+
+  &.new-game {
+    flex: 2;
+  }
 }
 
 /**
