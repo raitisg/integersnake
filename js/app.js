@@ -63,6 +63,7 @@ function init() {
 function start() {
 	selected = [];
 
+	clearUndo();
 	setScore(0);
 	initGrid();
 	drawGrid();
