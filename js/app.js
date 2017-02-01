@@ -46,7 +46,7 @@ function init() {
 	var cells_html = '';
 	var css_size = (100 / size) + '%';
 	for (var i = 0; i < (size * size); i++) {
-		cells_html += '<div class="square" style="width: '+css_size+'; height: '+css_size+';"><span class="cell" data-value=""></span></div>';
+		cells_html += '<div class="square" style="width: '+css_size+'; height: '+css_size+';"><span class="cell"></span></div>';
 	}
 	$canvas.innerHTML = cells_html;
 
@@ -269,8 +269,17 @@ function evaluateSelected() {
  * @param {Number} value
  */
 function setCellValue(index, value) {
-	cells[index].setAttribute('data-value', value);
+	var x = Math.ceil(value / 3);
+
+	if (x > 32) {
+		x = 32;
+	}
+
+	x = value;
+
 	cells[index].innerHTML = value;
+	cells[index].className = '';
+	cells[index].classList.add('cell', 'c' + x);
 }
 
 /**

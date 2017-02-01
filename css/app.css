@@ -1,20 +1,26 @@
+/**
+ * Variables
+ -------------------------------------------------------------------------------- */
+/**
+ * Mixins
+ -------------------------------------------------------------------------------- */
+/**
+ * Styles
+ -------------------------------------------------------------------------------- */
 * {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   box-sizing: border-box;
-  user-select: none;
-}
+  user-select: none; }
 
 .preload * {
-  transition: none !important;
-}
+  transition: none !important; }
 
 body {
   font-family: arial, sans-serif;
   min-height: 100vh;
   display: flex;
   padding: 0;
-  margin: 0;
-}
+  margin: 0; }
 
 .score {
   text-shadow: 0px -2px #2980B9;
@@ -27,26 +33,22 @@ body {
   padding: 0 15px;
   height: 25vmin;
   font-size: 3em;
-  color: #fff;
-}
+  color: #fff; }
 
 .hidden {
-  opacity: 0 !important;
-}
+  opacity: 0 !important; }
 
 .area {
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
   display: flex;
-  flex: 1;
-}
+  flex: 1; }
 
 .menu {
   flex-direction: column;
   display: flex;
-  width: auto;
-}
+  width: auto; }
 
 .canvas {
   background-color: white;
@@ -57,48 +59,436 @@ body {
   width: 98vmin;
   display: flex;
   margin: 1vmin;
-  opacity: 1;
-}
+  opacity: 1; }
 
 .square {
   display: flex;
   padding: 1px;
   height: 20%;
-  width: 20%;
-}
+  width: 20%; }
 
 .cell {
   transition: all .15s;
-  background-color: rgb(255, 220, 0);
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  background-color: #333;
   justify-content: center;
-  border: 1px solid #ddd;
   align-items: center;
   border-radius: 5px;
   font-weight: bold;
   font-size: 22px;
   display: flex;
-  flex: 1;
-}
+  color: #fff;
+  flex: 1; }
 
-.cell[data-value="1"]  { background-color: rgb(255, 245, 255); }
-.cell[data-value="2"]  { background-color: rgb(255, 235, 255); }
-.cell[data-value="3"]  { background-color: rgb(255, 225, 255); }
-.cell[data-value="4"]  { background-color: rgb(255, 215, 255); }
-.cell[data-value="6"]  { background-color: rgb(255, 195, 255); }
-.cell[data-value="8"]  { background-color: rgb(255, 175, 255); }
-.cell[data-value="9"]  { background-color: rgb(255, 165, 255); }
-.cell[data-value="10"] { background-color: rgb(255, 155, 255); }
-.cell[data-value="12"] { background-color: rgb(255, 135, 255); }
-.cell[data-value="15"] { background-color: rgb(255, 105, 255); }
-.cell[data-value="16"] { background-color: rgb(255, 96, 255); }
-.cell[data-value="18"] { background-color: rgb(255, 75, 255); }
-.cell[data-value="20"] { background-color: rgb(255, 55, 255); }
-.cell[data-value="24"] { background-color: rgb(255, 20, 255); }
+.c1 {
+  background-color: #eaf3e5;
+  border-color: #bedcb0;
+  color: #a1cc8d; }
+
+.c2 {
+  background-color: #c9e6fa;
+  border-color: #83c7f3;
+  color: #54b2ee; }
+
+.c3 {
+  background-color: #e5dbf1;
+  border-color: #bda4db;
+  color: #a380cc; }
+
+.c4 {
+  background-color: #fee4e8;
+  border-color: #fc9aa9;
+  color: #fb687f; }
+
+.c5 {
+  background-color: #fee9df;
+  border-color: #fcb795;
+  color: #fb9563; }
+
+.c6 {
+  background-color: #c5f1f7;
+  border-color: #82e0ee;
+  color: #55d4e8; }
+
+.c7 {
+  background-color: #fbf8ed;
+  border-color: #edddae;
+  color: #e4cb85; }
+
+.c8 {
+  background-color: #fdf1f6;
+  border-color: #f5adc8;
+  color: #ef80a9; }
+
+.c9 {
+  background-color: #dedfe0;
+  border-color: #b7b9bb;
+  color: #9c9fa3; }
+
+.c10 {
+  background-color: #d2e7c9;
+  border-color: #a7cf94;
+  color: #8ac071; }
+
+.c11 {
+  background-color: #a4d6f6;
+  border-color: #5eb6ef;
+  color: #2fa1eb; }
+
+.c12 {
+  background-color: #d0bee5;
+  border-color: #a887cf;
+  color: #8d63c0; }
+
+.c13 {
+  background-color: #fdbcc6;
+  border-color: #fb7287;
+  color: #fa405d; }
+
+.c14 {
+  background-color: #fdceb8;
+  border-color: #fb9c6d;
+  color: #fa7a3b; }
+
+.c15 {
+  background-color: #a1e8f2;
+  border-color: #5ed7e9;
+  color: #31cbe3; }
+
+.c16 {
+  background-color: #f4e9cc;
+  border-color: #e6cf8d;
+  color: #ddbd63; }
+
+.c17 {
+  background-color: #f9cddd;
+  border-color: #f089af;
+  color: #ea5c90; }
+
+.c18 {
+  background-color: #c9cbcd;
+  border-color: #a2a5a8;
+  color: #878b8f; }
+
+.c19 {
+  background-color: #bbdaad;
+  border-color: #90c378;
+  color: #73b354; }
+
+.c20 {
+  background-color: #7ec5f2;
+  border-color: #39a5ec;
+  color: #158edc; }
+
+.c21 {
+  background-color: #baa1d9;
+  border-color: #936ac3;
+  color: #7848b3; }
+
+.c22 {
+  background-color: #fc95a5;
+  border-color: #fa4a65;
+  color: #f9183b; }
+
+.c23 {
+  background-color: #fcb390;
+  border-color: #fa8145;
+  color: #f95f14; }
+
+.c24 {
+  background-color: #7ddfee;
+  border-color: #3acee4;
+  color: #1cb7cf; }
+
+.c25 {
+  background-color: #eddbaa;
+  border-color: #dfc16b;
+  color: #d6af42; }
+
+.c26 {
+  background-color: #f4a9c5;
+  border-color: #eb6597;
+  color: #e63878; }
+
+.c27 {
+  background-color: #b4b6b9;
+  border-color: #8c9094;
+  color: #73777b; }
+
+.c28 {
+  background-color: #a4ce90;
+  border-color: #79b65b;
+  color: #609a45; }
+
+.c29 {
+  background-color: #59b4ef;
+  border-color: #1694e5;
+  color: #1276b7; }
+
+.c30 {
+  background-color: #a583ce;
+  border-color: #7e4db8;
+  color: #653c96; }
+
+.c31 {
+  background-color: #fb6d83;
+  border-color: #f92244;
+  color: #e30628; }
+
+.c32 {
+  background-color: #fb9868;
+  border-color: #f9661e;
+  color: #dd4d06; }
+
+.c33 {
+  background-color: #59d6e9;
+  border-color: #1dbfd8;
+  color: #1798ab; }
+
+.c34 {
+  background-color: #e5cd89;
+  border-color: #d8b34a;
+  color: #c49c2b; }
+
+.c35 {
+  background-color: #ef85ac;
+  border-color: #e7417e;
+  color: #d91c62; }
+
+.c36 {
+  background-color: #9fa2a5;
+  border-color: #787c80;
+  color: #5f6266; }
+
+.c37 {
+  background-color: #8dc174;
+  border-color: #64a148;
+  color: #4e7e38; }
+
+.c38 {
+  background-color: #34a3eb;
+  border-color: #137cc0;
+  color: #0e5e92; }
+
+.c39 {
+  background-color: #9066c2;
+  border-color: #6a3f9d;
+  color: #513079; }
+
+.c40 {
+  background-color: #fa4561;
+  border-color: #ec062a;
+  color: #bb0521; }
+
+.c41 {
+  background-color: #fa7d40;
+  border-color: #e75006;
+  color: #b63f05; }
+
+.c42 {
+  background-color: #35cde4;
+  border-color: #18a0b4;
+  color: #127887; }
+
+.c43 {
+  background-color: #debf67;
+  border-color: #cca32d;
+  color: #a28123; }
+
+.c44 {
+  background-color: #eb6094;
+  border-color: #e21d66;
+  color: #b51751; }
+
+.c45 {
+  background-color: #8a8e91;
+  border-color: #64676b;
+  color: #4b4e50; }
+
+.c46 {
+  background-color: #76b558;
+  border-color: #53853b;
+  color: #3d612b; }
+
+.c47 {
+  background-color: #1691e1;
+  border-color: #0f649b;
+  color: #0b466c; }
+
+.c48 {
+  background-color: #7b49b6;
+  border-color: #563380;
+  color: #3e255b; }
+
+.c49 {
+  background-color: #f91d3f;
+  border-color: #c50523;
+  color: #93041a; }
+
+.c50 {
+  background-color: #f96219;
+  border-color: #c04305;
+  color: #8e3104; }
+
+.c51 {
+  background-color: #1dbbd4;
+  border-color: #138090;
+  color: #0d5864; }
+
+.c52 {
+  background-color: #d7b146;
+  border-color: #ab8825;
+  color: #81671c; }
+
+.c53 {
+  background-color: #e63c7b;
+  border-color: #be1855;
+  color: #901241; }
+
+.c54 {
+  background-color: #75797d;
+  border-color: #505356;
+  color: #38393b; }
+
+.c55 {
+  background-color: #629d46;
+  border-color: #41692f;
+  color: #2b451f; }
+
+.c56 {
+  background-color: #1279bb;
+  border-color: #0b4c76;
+  color: #072e47; }
+
+.c57 {
+  background-color: #673d99;
+  border-color: #422763;
+  color: #2a193e; }
+
+.c58 {
+  background-color: #e80629;
+  border-color: #9d041c;
+  color: #6b0313; }
+
+.c59 {
+  background-color: #e24f06;
+  border-color: #983504;
+  color: #662303; }
+
+.c60 {
+  background-color: #189cb0;
+  border-color: #0f606c;
+  color: #093840; }
+
+.c61 {
+  background-color: #c89f2c;
+  border-color: #896d1e;
+  color: #5f4c15; }
+
+.c62 {
+  background-color: #dd1c64;
+  border-color: #9a1445;
+  color: #6c0e31; }
+
+.c63 {
+  background-color: #616568;
+  border-color: #3c3f41;
+  color: #242526; }
+
+.c64 {
+  background-color: #51813a;
+  border-color: #304c22;
+  color: #1a2912; }
+
+.c65 {
+  background-color: #0f6196;
+  border-color: #083450;
+  color: #031622; }
+
+.c66 {
+  background-color: #54327c;
+  border-color: #2f1c46;
+  color: #160d21; }
+
+.c67 {
+  background-color: #c00522;
+  border-color: #750315;
+  color: #44020c; }
+
+.c68 {
+  background-color: #bb4105;
+  border-color: #702703;
+  color: #3f1602; }
+
+.c69 {
+  background-color: #137c8c;
+  border-color: #0a4049;
+  color: #04181c; }
+
+.c70 {
+  background-color: #a68524;
+  border-color: #685317;
+  color: #3e310d; }
+
+.c71 {
+  background-color: #b91853;
+  border-color: #750f35;
+  color: #480920; }
+
+.c72 {
+  background-color: #4e5053;
+  border-color: #292a2c;
+  color: #101111; }
+
+.c73 {
+  background-color: #3f652d;
+  border-color: #1e3015;
+  color: #080d06; }
+
+.c74 {
+  background-color: #0b4971;
+  border-color: #041c2b;
+  color: black; }
+
+.c75 {
+  background-color: #40265f;
+  border-color: #1b1028;
+  color: #030204; }
+
+.c76 {
+  background-color: #98041b;
+  border-color: #4d020e;
+  color: #1c0105; }
+
+.c77 {
+  background-color: #933304;
+  border-color: #491902;
+  color: #170801; }
+
+.c78 {
+  background-color: #0e5c68;
+  border-color: #052025;
+  color: black; }
+
+.c79 {
+  background-color: #856a1d;
+  border-color: #46380f;
+  color: #1c1706; }
+
+.c80 {
+  background-color: #951343;
+  border-color: #510a24;
+  color: #240510; }
+
+.c81 {
+  background-color: #3a3c3e;
+  border-color: #151616;
+  color: black; }
 
 .cell.selected {
   border-color: transparent;
-  opacity: .5;
-}
+  opacity: .75; }
 
 .game-over-screen {
   background: rgba(0, 0, 0, 0.1);
@@ -113,21 +503,16 @@ body {
   font-size: 2em;
   display: none;
   bottom: 1vmin;
-  left: 1vmin;
-}
+  left: 1vmin; }
 
 .game-over-screen h1 {
-  text-shadow: 0 0 10px #fff;
-}
+  text-shadow: 0 0 10px #fff; }
 
 .game-over .game-over-screen {
-  display: flex;
-}
-
+  display: flex; }
 .game-over .canvas {
   filter: grayscale(100%);
-  opacity: 0.3;
-}
+  opacity: 0.3; }
 
 .button {
   transition: all .05s;
@@ -139,49 +524,37 @@ body {
   padding: 1em;
   color: #fff;
   border: 0;
-  flex: 1;
-}
+  flex: 1; }
+  .button.green {
+    border-bottom: 5px solid #669644;
+    text-shadow: 0px -2px #669644;
+    background-color: #82BF56; }
+  .button.yellow {
+    border-bottom: 5px solid #D1B358;
+    text-shadow: 0px -2px #D1B358;
+    background-color: #F2CF66; }
+  .button:focus {
+    outline: 0; }
+  .button:active {
+    transform: translate(0, 5px);
+    border-bottom-width: 0;
+    outline: 0; }
+  .button[disabled] {
+    border-bottom: 5px solid #aaa;
+    text-shadow: 0px -2px #999;
+    background-color: #ccc; }
 
-.button.green {
-  border-bottom: 5px solid #669644;
-  text-shadow: 0px -2px #669644;
-  background-color: #82BF56;
-}
-
-.button.yellow {
-  border-bottom: 5px solid #D1B358;
-  text-shadow: 0px -2px #D1B358;
-  background-color: #F2CF66;
-}
-
-.button:focus {
-  outline: 0;
-}
-
-.button:active {
-  transform: translate(0, 5px);
-  border-bottom-width: 0;
-  outline: 0;
-}
-
-.button[disabled] {
-  border-bottom: 5px solid #aaa;
-  text-shadow: 0px -2px #999;
-  background-color: #ccc;
-}
-
+/**
+ * Responsiveness
+ -------------------------------------------------------------------------------- */
 @media screen and (orientation: portrait) {
   body {
-    flex-direction: column-reverse;
-  }
+    flex-direction: column-reverse; }
 
   .game-over {
     bottom: 0;
-    top: auto;
-  }
+    top: auto; }
 
   .menu {
     flex-direction: row;
-    width: 90vw;
-  }
-}
+    width: 90vw; } }

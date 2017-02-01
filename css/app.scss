@@ -1,0 +1,298 @@
+/**
+ * Variables
+ -------------------------------------------------------------------------------- */
+
+$color1: #3f652d;
+$color2: #0b4971;
+$color3: #40265f;
+$color4: #98041b;
+$color5: #933304;
+$color6: #0e5c68;
+$color7: #856a1d;
+$color8: #951343;
+$color9: #3a3c3e;
+
+/**
+ * Mixins
+ -------------------------------------------------------------------------------- */
+
+@mixin cell($color) {
+  background-color: $color;
+  border-color: darken($color, 15%);
+  color: darken($color, 25%);
+}
+
+/**
+ * Styles
+ -------------------------------------------------------------------------------- */
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.preload * {
+  transition: none !important;
+}
+
+body {
+  font-family: arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.score {
+  text-shadow: 0px -2px #2980B9;
+  background-color: #3498DB;
+  display: inline-block;
+  border-radius: 10px;
+  line-height: 25vmin;
+  text-align: center;
+  min-width: 25vmin;
+  padding: 0 15px;
+  height: 25vmin;
+  font-size: 3em;
+  color: #fff;
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
+.area {
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  flex: 1;
+}
+
+.menu {
+  flex-direction: column;
+  display: flex;
+  width: auto;
+}
+
+.canvas {
+  background-color: white;
+  transition: all 1s;
+  flex-wrap: wrap;
+  cursor: pointer;
+  height: 98vmin;
+  width: 98vmin;
+  display: flex;
+  margin: 1vmin;
+  opacity: 1;
+}
+
+.square {
+  display: flex;
+  padding: 1px;
+  height: 20%;
+  width: 20%;
+}
+
+.cell {
+  transition: all .15s;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  background-color: #333;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  color: #fff;
+  flex: 1;
+}
+
+.c1 { @include cell(lighten($color1, 64%)); }
+.c2 { @include cell(lighten($color2, 64%)); }
+.c3 { @include cell(lighten($color3, 64%)); }
+.c4 { @include cell(lighten($color4, 64%)); }
+.c5 { @include cell(lighten($color5, 64%)); }
+.c6 { @include cell(lighten($color6, 64%)); }
+.c7 { @include cell(lighten($color7, 64%)); }
+.c8 { @include cell(lighten($color8, 64%)); }
+.c9 { @include cell(lighten($color9, 64%)); }
+
+.c10 { @include cell(lighten($color1, 56%)); }
+.c11 { @include cell(lighten($color2, 56%)); }
+.c12 { @include cell(lighten($color3, 56%)); }
+.c13 { @include cell(lighten($color4, 56%)); }
+.c14 { @include cell(lighten($color5, 56%)); }
+.c15 { @include cell(lighten($color6, 56%)); }
+.c16 { @include cell(lighten($color7, 56%)); }
+.c17 { @include cell(lighten($color8, 56%)); }
+.c18 { @include cell(lighten($color9, 56%)); }
+
+.c19 { @include cell(lighten($color1, 48%)); }
+.c20 { @include cell(lighten($color2, 48%)); }
+.c21 { @include cell(lighten($color3, 48%)); }
+.c22 { @include cell(lighten($color4, 48%)); }
+.c23 { @include cell(lighten($color5, 48%)); }
+.c24 { @include cell(lighten($color6, 48%)); }
+.c25 { @include cell(lighten($color7, 48%)); }
+.c26 { @include cell(lighten($color8, 48%)); }
+.c27 { @include cell(lighten($color9, 48%)); }
+
+.c28 { @include cell(lighten($color1, 40%)); }
+.c29 { @include cell(lighten($color2, 40%)); }
+.c30 { @include cell(lighten($color3, 40%)); }
+.c31 { @include cell(lighten($color4, 40%)); }
+.c32 { @include cell(lighten($color5, 40%)); }
+.c33 { @include cell(lighten($color6, 40%)); }
+.c34 { @include cell(lighten($color7, 40%)); }
+.c35 { @include cell(lighten($color8, 40%)); }
+.c36 { @include cell(lighten($color9, 40%)); }
+
+.c37 { @include cell(lighten($color1, 32%)); }
+.c38 { @include cell(lighten($color2, 32%)); }
+.c39 { @include cell(lighten($color3, 32%)); }
+.c40 { @include cell(lighten($color4, 32%)); }
+.c41 { @include cell(lighten($color5, 32%)); }
+.c42 { @include cell(lighten($color6, 32%)); }
+.c43 { @include cell(lighten($color7, 32%)); }
+.c44 { @include cell(lighten($color8, 32%)); }
+.c45 { @include cell(lighten($color9, 32%)); }
+
+.c46 { @include cell(lighten($color1, 24%)); }
+.c47 { @include cell(lighten($color2, 24%)); }
+.c48 { @include cell(lighten($color3, 24%)); }
+.c49 { @include cell(lighten($color4, 24%)); }
+.c50 { @include cell(lighten($color5, 24%)); }
+.c51 { @include cell(lighten($color6, 24%)); }
+.c52 { @include cell(lighten($color7, 24%)); }
+.c53 { @include cell(lighten($color8, 24%)); }
+.c54 { @include cell(lighten($color9, 24%)); }
+
+.c55 { @include cell(lighten($color1, 16%)); }
+.c56 { @include cell(lighten($color2, 16%)); }
+.c57 { @include cell(lighten($color3, 16%)); }
+.c58 { @include cell(lighten($color4, 16%)); }
+.c59 { @include cell(lighten($color5, 16%)); }
+.c60 { @include cell(lighten($color6, 16%)); }
+.c61 { @include cell(lighten($color7, 16%)); }
+.c62 { @include cell(lighten($color8, 16%)); }
+.c63 { @include cell(lighten($color9, 16%)); }
+
+.c64 { @include cell(lighten($color1, 8%)); }
+.c65 { @include cell(lighten($color2, 8%)); }
+.c66 { @include cell(lighten($color3, 8%)); }
+.c67 { @include cell(lighten($color4, 8%)); }
+.c68 { @include cell(lighten($color5, 8%)); }
+.c69 { @include cell(lighten($color6, 8%)); }
+.c70 { @include cell(lighten($color7, 8%)); }
+.c71 { @include cell(lighten($color8, 8%)); }
+.c72 { @include cell(lighten($color9, 8%)); }
+
+.c73 { @include cell(lighten($color1, 0%)); }
+.c74 { @include cell(lighten($color2, 0%)); }
+.c75 { @include cell(lighten($color3, 0%)); }
+.c76 { @include cell(lighten($color4, 0%)); }
+.c77 { @include cell(lighten($color5, 0%)); }
+.c78 { @include cell(lighten($color6, 0%)); }
+.c79 { @include cell(lighten($color7, 0%)); }
+.c80 { @include cell(lighten($color8, 0%)); }
+.c81 { @include cell(lighten($color9, 0%)); }
+
+.cell.selected {
+  border-color: transparent;
+  opacity: .75;
+}
+
+.game-over-screen {
+  background: rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  position: absolute;
+  cursor: default;
+  height: 98vmin;
+  width: 98vmin;
+  font-size: 2em;
+  display: none;
+  bottom: 1vmin;
+  left: 1vmin;
+}
+
+.game-over-screen h1 {
+  text-shadow: 0 0 10px #fff;
+}
+
+.game-over {
+  .game-over-screen {
+    display: flex;
+  }
+
+  .canvas {
+    filter: grayscale(100%);
+    opacity: 0.3;
+  }
+}
+
+.button {
+  transition: all .05s;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+  padding: 1em;
+  color: #fff;
+  border: 0;
+  flex: 1;
+
+  &.green {
+    border-bottom: 5px solid #669644;
+    text-shadow: 0px -2px #669644;
+    background-color: #82BF56;
+  }
+
+  &.yellow {
+    border-bottom: 5px solid #D1B358;
+    text-shadow: 0px -2px #D1B358;
+    background-color: #F2CF66;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    transform: translate(0, 5px);
+    border-bottom-width: 0;
+    outline: 0;
+  }
+
+  &[disabled] {
+    border-bottom: 5px solid #aaa;
+    text-shadow: 0px -2px #999;
+    background-color: #ccc;
+  }
+}
+
+/**
+ * Responsiveness
+ -------------------------------------------------------------------------------- */
+
+@media screen and (orientation: portrait) {
+  body {
+    flex-direction: column-reverse;
+  }
+
+  .game-over {
+    bottom: 0;
+    top: auto;
+  }
+
+  .menu {
+    flex-direction: row;
+    width: 90vw;
+  }
+}
